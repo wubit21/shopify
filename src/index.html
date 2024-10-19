@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,356 +16,404 @@
 
 <body>
 
+
     <!-- Header Section -->
-    <header id="main-header" class="header fixed top-0 left-0 w-full py-0 z-50 bg-transparent text-white">
-        <!-- Initially transparent -->
+    <header id="main-header" class="header fixed top-0 left-0 w-full py-4 z-50 bg-transparent text-white">
+        <!-- Mobile-first approach: Smaller screen styles first -->
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <!-- Left: Logo with Icon and Navigation Links -->
-            <div class="flex items-center ml-16">
+            <!-- Left: Logo with Icon -->
+            <div class="flex items-center space-x-4">
                 <!-- Shopify Icon -->
-                <img src="../images/s.jpg" alt="Shopify Icon" class="w-12 h-12">
+                <img src="../images/s.jpg" alt="Shopify Icon" class="w-10 h-10 sm:w-12 sm:h-12">
 
                 <!-- Shopify Title -->
-                <img src="../images/icon.jpg" alt="Shopify Icon" class="w-24 h-20">
-
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-4 ml-8">
-                    <a href="#" class="text-white hover:text-white font-normal">Solutions</a>
-                    <a href="#" class="text-white hover:text-white font-normal">Pricing</a>
-                    <a href="#" class="text-white hover:text-white font-normal">Resources</a>
-                    <a href="#" class="text-white hover:text-white font-normal">Enterprise</a>
-                    <a href="#" class="text-white hover:text-white font-normal">What's New</a>
-                </nav>
+                <img src="../images/icon.jpg" alt="Shopify Icon" class="w-20 h-16 sm:w-24 sm:h-20">
             </div>
 
-            <div class="flex items-center space-x-8 ml-auto mr-20">
+            <!-- Burger Menu Button (always visible on mobile) -->
+            <button id="burger-btn" class="md:hidden focus:outline-none">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Desktop Navigation Links (hidden on mobile, visible on desktop) -->
+            <nav class="hidden md:flex items-center space-x-4 ml-8">
+                <a href="#" class="text-white hover:text-white font-normal">Solutions</a>
+                <a href="#" class="text-white hover:text-white font-normal">Pricing</a>
+                <a href="#" class="text-white hover:text-white font-normal">Resources</a>
+                <a href="#" class="text-white hover:text-white font-normal">Enterprise</a>
+                <a href="#" class="text-white hover:text-white font-normal">What's New</a>
+            </nav>
+
+            <!-- Desktop Log in and Trial Button (hidden on mobile, visible on desktop) -->
+            <div class="hidden md:flex items-center space-x-4 ml-auto">
                 <a href="#" class="text-white hover:text-white font-bold">Log in</a>
                 <a href="#"
-                    class="bg-white hover:bg-gray-200 text-black py-2 px-6 rounded-full font-bold border border-gray-300">Start
-                    free trial</a>
+                    class="bg-white hover:bg-gray-200 text-black py-2 px-4 sm:px-6 rounded-full font-bold border border-gray-300">
+                    Start free trial
+                </a>
             </div>
         </div>
-    </header>
 
-
-
-
-
-    <section class="relative w-full  h-[120vh] overflow-hidden">
-        <!-- Background Video -->
-        <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover">
-            <source src="../images/vid.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-
-        <div class="flex flex-col justify-center items-start w-full h-full bg-black bg-opacity-50 z-10 relative">
-            <!-- Left side text: "Be the next" -->
-            <div class="flex items-center pl-8 text-white font-light z-20 ml-12 mt-32">
-                <h1 class="text-8xl">Be the next</h1>
+        <!-- Mobile Menu (initially hidden) -->
+        <nav id="mobile-menu" class="hidden flex-col items-center bg-black text-white py-6 md:hidden">
+            <div class="ml-8 flex flex-col  space-y-4">
+                <!-- Mobile Links -->
+                <a href="#" class="text-white hover:text-gray-300 font-normal text-lg">Solutions</a>
+                <a href="#" class="text-white hover:text-gray-300 font-normal text-lg">Pricing</a>
+                <a href="#" class="text-white hover:text-gray-300 font-normal text-lg">Resources</a>
+                <a href="#" class="text-white hover:text-gray-300 font-normal text-lg">Enterprise</a>
+                <a href="#" class="text-white hover:text-gray-300 font-normal text-lg">What's New</a>
             </div>
-
-
-            <div class="flex flex-col items-start text-white p-8 z-20 ml-12 mt-2 h-auto">
-                <h2 id="rotatingText" class="text-8xl font-light transition-transform duration-1000 ease-in-out"></h2>
-            </div>
-
-
-            <!-- Content under "Be the next" -->
-            <div class="flex flex-col items-start text-white p-8 z-20 ml-16 mt-2">
-
-                <p class="text-lg mb-8 ">Dream big, build fast, and grow far on Shopify.</p>
+            <div class="flex flex-col items-center mt-8 space-y-4">
+                <!-- Log in and Start Free Trial -->
+                <a href="#" class="text-white hover:text-gray-300 font-bold text-lg">Log in</a>
                 <a href="#"
                     class="bg-white hover:bg-gray-200 text-black py-2 px-6 rounded-full font-bold border border-gray-300">
-                    Start Free Trial</a>
-                <p class="text-lg mb-8">Get 3 days free
-                    then 1 month for $1</p>
+                    Start free trial
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- <script>
+        document.getElementById('burger-btn').addEventListener('click', function () {
+            var mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script> -->
+
+
+
+    <section class="relative w-full h-screen overflow-hidden">
+        <!-- Background Video Container -->
+        <div class="absolute inset-0">
+            <video autoplay muted loop class="w-full h-full object-cover">
+                <source src="../images/vid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Content Overlay -->
+        <div class="relative flex flex-col justify-center items-start w-full h-full bg-black bg-opacity-50 z-10">
+            <!-- Left side text: "Be the next" -->
+            <div class="flex items-center text-white font-light z-20 mt-32 w-full">
+                <h1 class="text-5xl md:text-6xl lg:text-8xl pl-4 md:pl-16 lg:pl-32">Be the next</h1>
+            </div>
+
+            <div class="flex flex-col items-start text-white z-20 mt-2 w-full">
+                <h2 id="rotatingText"
+                    class="text-5xl md:text-6xl lg:text-8xl font-light transition-transform duration-1000 ease-in-out pl-4 md:pl-16 lg:pl-32">
+                </h2>
+            </div>
+
+            <!-- Content under "Be the next" -->
+            <div class="flex flex-col items-start text-white z-20 mt-2 w-full">
+                <p class="text-lg mb-4 pl-4 md:pl-16 lg:pl-32">Dream big, build fast, and grow far on Shopify.</p>
+                <a href="#"
+                    class="bg-white hover:bg-gray-200 text-black py-2 px-6 rounded-full font-bold border border-gray-300 ml-4 md:ml-16 lg:ml-32 mb-4">
+                    Start Free Trial
+                </a>
+                <p class="text-lg mb-8 pl-4 md:pl-16 lg:pl-32">Get 3 days free then 1 month for $1</p>
             </div>
         </div>
     </section>
 
+    <style>
+        /* Ensure no body overflow */
+        body {
+            overflow-x: hidden;
+            /* Prevent horizontal overflow */
+        }
+    </style>
+
+
+
+
 
     <section
-        class="relative bg-black w-full h-[815vh] flex items-start justify-start overflow-hidden rounded-t-[50px] -mt-12 z-20">
-        <div class="text-white text-left p-8 flex flex-col mx-16">
+        class="relative bg-black w-full h-auto md:h-[815vh] flex items-start justify-start overflow-hidden rounded-t-[50px] z-20 -mt-10">
+        <div class="text-white text-left p-8 flex flex-col md:px-16 px-4">
 
-            <p class="text-7xl mb-6 mt-24 font-light " style="word-spacing: -0.09em;">The one commerce platform behind
-                it all.</p>
-            <p class=" text-5xl mb-6 mt-4 font-light" style="word-spacing: -0.09em;">
+            <p class="text-4xl md:text-7xl mb-6 mt-24 font-light" style="word-spacing: -0.09em;">The one commerce
+                platform behind it all.</p>
+            <p class="text-2xl md:text-5xl mb-6 mt-4 font-light" style="word-spacing: -0.09em;">
                 Sell online and in person. Sell locally and globally. Sell direct and wholesale. Sell on desktop and
                 mobile.
             </p>
 
             <!-- Flex container with three items -->
-            <div class="flex space-x-6 mt-8">
-
+            <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6 mt-8">
+                <!-- Wrapper for mobile slider -->
                 <div
-                    class="w-1/2 h-[24rem] bg-gray-800 rounded-lg overflow-hidden transition-colors duration-300 cursor-grab hover:opacity-70">
-                    <img src="../images/1.webp" alt="Feature One Image" class="w-full h-full object-cover">
+                    class="md:hidden overflow-x-auto whitespace-nowrap scroll-smooth snap-x snap-mandatory scrollbar-hide">
+                    <!-- Slide 1 -->
+                    <div
+                        class="inline-block w-full h-[24rem] bg-gray-800 rounded-lg overflow-hidden snap-center transition-colors duration-300 cursor-grab hover:opacity-70">
+                        <img src="../images/1.webp" alt="Feature One Image" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div
+                        class="inline-block w-full h-[24rem] bg-gray-800 rounded-lg overflow-hidden snap-center transition-colors duration-300 cursor-grab hover:opacity-70">
+                        <img src="../images/2.webp" alt="Feature Two Image" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div
+                        class="inline-block w-full h-[24rem] bg-gray-800 rounded-lg overflow-hidden snap-center transition-colors duration-300 cursor-grab hover:opacity-70">
+                        <img src="../images/3.webp" alt="Feature Three Image" class="w-full h-full object-cover">
+                    </div>
                 </div>
 
-                <!--  (Smaller) -->
-                <div
-                    class="w-1/4 h-[24rem] bg-gray-800 rounded-lg overflow-hidden transition-colors duration-300 cursor-grab hover:opacity-70">
-
-                    <img src="../images/222.jpg" alt="Feature Two Image" class="w-full h-full object-cover">
-                </div>
-
-
-                <div
-                    class="w-1/2 h-[24rem] bg-gray-800 rounded-lg overflow-hidden transition-colors duration-300 cursor-grab hover:opacity-70">
-
-                    <img src="../images/3.webp" alt="Feature Three Image" class="w-full h-full object-cover">
+                <!-- Layout for larger screens -->
+                <div class="hidden md:flex md:space-x-6">
+                    <div
+                        class="w-full md:w-1/2 h-[24rem] bg-gray-800 rounded-lg overflow-hidden transition-colors duration-300 cursor-grab hover:opacity-70">
+                        <img src="../images/1.webp" alt="Feature One Image" class="w-full h-full object-cover">
+                    </div>
+                    <div
+                        class="w-full md:w-1/4 h-[24rem] bg-gray-800 rounded-lg overflow-hidden transition-colors duration-300 cursor-grab hover:opacity-70">
+                        <img src="../images/2.webp" alt="Feature Two Image" class="w-full h-full object-cover">
+                    </div>
+                    <div
+                        class="w-full md:w-1/2 h-[24rem] bg-gray-800 rounded-lg overflow-hidden transition-colors duration-300 cursor-grab hover:opacity-70">
+                        <img src="../images/3.webp" alt="Feature Three Image" class="w-full h-full object-cover">
+                    </div>
                 </div>
             </div>
 
 
             <div class="flex flex-col md:flex-row mt-32 space-y-6 md:space-y-0 md:space-x-8">
-                <!-- Flex container for columns -->
-                <!-- Column 1 -->
-                <div class="flex-[1.5] "> <!-- This allows the column to take up equal space -->
-                    <h2 class="text-5xl font-light mb-4 d ">For everyone from entrepreneurs to enterprise</h2>
+                <div class="flex-[1.5] ">
+                    <h2 class="text-5xl font-light mb-4">For everyone from entrepreneurs to enterprise</h2>
                 </div>
-
-                <!-- Column 2 -->
-                <div class="flex-1 "> <!-- This allows the column to take up equal space -->
-                    <h2 class="text-[1.25remrem] font-light text-gray-400 mt-14 ">
+                <div class="flex-1 ">
+                    <h2 class="text-[1.25rem] font-light text-gray-400 mt-14 ">
                         Millions of merchants of every size have collectively made over $1,000,000,000,000 in sales on
                         Shopify.
                     </h2>
                 </div>
             </div>
+            <!-- Flex container with 6 images -->
+            <div class="mt-14">
+                <div class="flex overflow-x-auto snap-x snap-mandatory space-x-1">
+                    <!-- Item 1 -->
+                    <div class="flex-shrink-0 w-full md:w-1/3 snap-start">
+                        <div class="bg-gray-800 rounded-lg overflow-hidden h-80 relative group">
+                            <img src="../images/alaska.webp" alt="Feature One Image"
+                                class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0 absolute inset-0">
+                            <img src="../images/summer.10PM.webp" alt="Feature One Image on Hover"
+                                class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100 absolute inset-0">
+                        </div>
+                        <div class="mt-4 text-gray-200">
+                            <h3 class="text-xl font-semibold">Get started fast</h3>
+                            <p>Solo seller Megan Bre Camp started <span class="font-bold">Summer Solace Tallow</span> to
+                                sell her organic candles and skincare online and at local farmers markets.</p>
+                        </div>
+                    </div>
 
-            <div class="flex space-x-4 mt-14">
+                    <!-- Item 2 -->
+                    <div class="flex-shrink-0 w-full md:w-1/3 snap-start">
+                        <div class="bg-gray-800 rounded-lg overflow-hidden h-80 relative group">
+                            <img src="../images/gym.webp" alt="Feature Two Image"
+                                class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0 absolute inset-0">
+                            <img src="../images/closets.jpg" alt="Feature Two Image on Hover"
+                                class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100 absolute inset-0">
+                        </div>
+                        <div class="mt-4 text-gray-200">
+                            <h3 class="text-xl font-semibold">Grow as big as you want</h3>
+                            <p>Athleisure brand <span class="font-bold">Gymshark</span> grew from working out of a
+                                garage to
+                                the global juggernaut it is today, with $500M+ sales annually.</p>
+                        </div>
+                    </div>
 
-                <div class="flex-1 bg-gray-800 rounded-lg overflow-hidden h-80 relative group">
-
-                    <img src="../images/alaska.webp" alt="Feature One Image"
-                        class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0 absolute inset-0">
-
-                    <img src="../images/summer.10PM.webp" alt="Feature One Image on Hover"
-                        class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100 absolute inset-0">
-
-
-
-
-                </div>
-
-
-                <div class="flex-1 bg-gray-800 rounded-lg overflow-hidden h-80 relative group">
-
-                    <img src="../images/gym.webp" alt="Feature Two Image"
-                        class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0 absolute inset-0">
-                    <!-- Initial image with absolute position -->
-                    <img src="../images/closets.jpg" alt="Feature Two Image on Hover"
-                        class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100 absolute inset-0">
-
-
-                </div>
-
-                <!-- Item 3 -->
-                <div class="flex-1 bg-gray-800 rounded-lg overflow-hidden h-80 relative group">
-
-                    <img src="../images/mattel.webp" alt="Feature Three Image"
-                        class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0 absolute inset-0">
-                    <!-- Initial image with absolute position -->
-                    <img src="../images/barbie.jpg" alt="Feature Three Image on Hover"
-                        class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100 absolute inset-0">
-
-                </div>
-            </div>
-
-
-            <div class="flex space-x-4 mt-2 ml-[-30px]"> <!-- Added a negative left margin -->
-                <!-- Flex Item 1 -->
-                <div class="flex-1 bg-black p-6 rounded-lg text-left">
-                    <h3 class="text-2xl font-light mb-4">Get started fast</h3>
-                    <p class="1.25rem font-light text-gray-400">Solo seller Megan Bre Camp started <span
-                            class="font-semibold">Summer Solace Tallow</span> to sell her organic candles and skincare
-                        online and at local farmers markets.</p>
-                </div>
-
-                <!-- Flex Item 2 -->
-                <div class="flex-1 bg-black p-6 rounded-lg text-left">
-                    <h3 class="text-2xl font-light mb-4">Grow as big as you want</h3>
-                    <p class="1.25rem font-light text-gray-400">Athleisure brand <span
-                            class="font-semibold">Gymshark</span> grew from working out of a garage to the global
-                        juggernaut it is today, with $500M+ sales annually.</p>
-                </div>
-
-                <!-- Flex Item 3 -->
-                <div class="flex-1 bg-black p-6 rounded-lg text-left">
-                    <div class="ml-[-10px]"> <!-- Added wrapper div with negative left margin -->
-                        <h3 class="text-2xl font-light mb-4">Raise the bar</h3>
-                        <p class="1.25rem font-light text-gray-400">With the help of Shopify for enterprise, <span
-                                class="font-semibold"> Mattel</span> sells their iconic toys direct to customers around
-                            the world.</p>
+                    <!-- Item 3 -->
+                    <div class="flex-shrink-0 w-full md:w-1/3 snap-start">
+                        <div class="bg-gray-800 rounded-lg overflow-hidden h-80 relative group">
+                            <img src="../images/mattel.webp" alt="Feature Three Image"
+                                class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0 absolute inset-0">
+                            <img src="../images/barbie.jpg" alt="Feature Three Image on Hover"
+                                class="w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100 absolute inset-0">
+                        </div>
+                        <div class="mt-4 text-gray-200">
+                            <h3 class="text-xl font-semibold">Raise the bar</h3>
+                            <p>With the help of Shopify for enterprise, <span class="font-bold">Mattel</span> sells
+                                their
+                                iconic toys direct to customers around the world.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
             <div>
                 <button
-                    class="mx-auto block bg-black text-white border-2 font-semibold border-white py-3 px-6 text-lg rounded-full transition-colors duration-300 hover:bg-white hover:text-black cursor-pointer">
+                    class="mx-auto mt-8 block bg-black text-white border-2 font-semibold border-white py-3 px-6 text-lg rounded-full transition-colors duration-300 hover:bg-white hover:text-black cursor-pointer">
                     Pick a plan that fits
                 </button>
-
             </div>
 
             <div class="flex items-center mt-32 ml-0">
                 <p class="text-sky-400/100 text-lg ">Online and in person</p>
             </div>
 
-
             <div class="flex flex-col md:flex-row mt-8 space-y-6 md:space-y-0 md:space-x-8">
-                <!-- Flex container for columns -->
-                <!-- Column 1 -->
-                <div class="flex-[1.5] "> <!-- This allows the column to take up equal space -->
-                    <h2 class="text-5xl font-light mb-4 d ">Sell here, there, and everywhere</h2>
+                <div class="flex-[1.5]">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-light mb-4">
+                        Sell here, there, and everywhere
+                    </h2>
                 </div>
-
-                <!-- Column 2 -->
-                <div class="flex-1 "> <!-- This allows the column to take up equal space -->
-                    <h2 class="text-[1.25remrem] font-light text-gray-400 mt-4">
+                <div class="flex-1 ">
+                    <h2 class="text-[1.25rem] font-light text-gray-400 mt-4">
                         <a href="#" class="underline hover:no-underline">Get a stunning store</a> that’s made to
                         sell—whether you build from scratch or start fast with pre-built themes.
                     </h2>
-
                 </div>
             </div>
 
-
-            <section class="inner-section p-6 mt-8 rounded-lg shadow-lg h-[80vh] bg-[#022924]" >
-
-
-                <video autoplay muted loop class="w-full  rounded-lg shadow-md h-full">
+            <section class="inner-section p-6 mt-8 rounded-lg shadow-lg h-[80vh] bg-[#022924]">
+                <video autoplay muted loop class="w-full h-full rounded-lg shadow-md object-cover">
                     <source src="../images/01.webm" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-
-
             </section>
 
-
-
-            <div class="flex justify-between items-center h-full space-x-4">
+            <!--3d-->
+            <div
+                class="flex flex-col md:flex-row justify-between items-center h-full space-y-4 md:space-y-0 md:space-x-4 mt-10">
                 <!-- Item 1 -->
                 <div id="image-container"
-                    class="flex-1 h-[600px] p-4 rounded-lg shadow-md mt-4 overflow-hidden relative bg-[#022924]"
-                    >
+                    class="w-full md:flex-1 h-[400px] md:h-[600px] p-4 rounded-lg shadow-md overflow-hidden relative bg-[#022924]">
                     <img src="../images/pos.webp" alt="Image" id="moving-image"
                         class="w-full h-full object-cover rounded-lg transition-transform duration-300">
                     <div class="absolute bottom-0 left-0 right-0 p-4 bg-opacity-75">
-                        <h3 class="text-2xl font-light mb-4">In-person point of sale</h3>
-
-                        <p class="1.25rem font-light text-gray-400">
-                            Sell face to face and keep offline and online sales in sync with <span
-                                class="font-semibold"> Shopify POS.</span> </p>
-
+                        <h3 class="text-xl md:text-2xl font-light mb-4">In-person point of sale</h3>
+                        <p class="text-sm md:text-base font-light text-gray-400">
+                            Sell face to face and keep offline and online sales in sync with
+                            <span class="font-semibold">Shopify POS.</span>
+                        </p>
                     </div>
                 </div>
 
-
-
-
-
                 <!-- Item 2 -->
-                <div class="flex-1 h-[600px] p-4 rounded-lg shadow-md mt-4 bg-[#022924]" >
-                    <div class="flex justify-center mb-4 -mt-8"> <!-- Center the video and add negative margin-top -->
-                        <video autoplay muted loop class="max-w-full h-auto rounded-lg">
+                <div
+                    class="w-full md:flex-1 h-[400px] md:h-[600px] p-4 rounded-lg shadow-md bg-[#022924] flex flex-col justify-between">
+                    <div class="flex justify-center mb-4">
+                        <video autoplay muted loop class="max-w-9/10 h-80 rounded-lg -mt-10">
                             <source src="../images/mid.webm" type="video/webm">
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <h3 class="text-2xl font-light mb-4">In-person point of sale</h3>
-                    <p class="text-base font-light text-gray-400"> <!-- Changed class from 1.25rem to text-base -->
-                        Sell face to face and keep offline and online sales in sync with <span
-                            class="font-semibold">Shopify POS.</span>
-                    </p>
-                </div>
 
-
-
-
-                <!-- Item 3 -->
-                <div class="flex-1 h-[600px] p-4 rounded-lg shadow-md mt-4 bg-[#022924]" >
-
-
-                </div>
-
-
-
-
-
-
-            </div>
-
-
-
-            <div class="flex items-center mt-32 ml-0">
-                <p class="text-sky-400/100 text-lg ">Direct and wholesale</p>
-            </div>
-
-
-            <div class="flex flex-col md:flex-row mt-8 space-y-6 md:space-y-0 md:space-x-8">
-
-                <div class="flex-[1.5] ">
-                    <h2 class="text-5xl font-light mb-4 d ">Find your forever customers</h2>
-                </div>
-            </div>
-            <!--left and right flex boxes-->
-            <div class="flex space-x-4">
-                <!-- First item -->
-                <div class="flex-1 p-4 h-[650px] rounded-lg bg-[#042f2e] relative">
-                    <video autoplay muted loop class="w-full h-full rounded-lg -mt-16">
-                        <source src="../images/left.webm" type="video/webm">
-                        Your browser does not support the video tag.
-                    </video>
-
-                    <!-- Text content with absolute positioning -->
-                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-[#042f2e] bg-opacity-75 rounded-b-lg">
-                        <h3 class="text-2xl font-light text-white mb-2">Reach the right customers for less</h3>
-                        <p class="text-base font-light text-gray-400">
-                            Cut acquisition costs as much as 50% with Shopify Audiences and keep them coming back with
-                            integrated marketing tools and
-                            <a href="#" class="underline hover:no-underline text-white">insightful analytics.</a>
+                    <div class="mt-auto">
+                        <h3 class="text-xl md:text-2xl font-light mb-4">Publish across channels</h3>
+                        <p class="text-sm md:text-base font-light text-gray-400">
+                            Show up where shoppers scroll, search, and shop with
+                            <span class="font-semibold">multichannel integration.</span>
                         </p>
-
                     </div>
                 </div>
 
+
+                <!-- Item 3 -->
+                <div
+                    class="w-full md:flex-1 h-[400px] md:h-[600px] p-4 rounded-lg shadow-md bg-[#022924] flex flex-col justify-between">
+                    <div class="flex justify-center mb-4">
+                        <img src="../images/do.png" alt="Feature One Image"
+                            class="w-full max-w-[190px] md:max-w-[100px] lg:max-w-[350px] h-auto object-cover rounded-lg">
+                    </div>
+
+
+
+
+                    <div class="mt-auto">
+                        <h3 class="text-xl md:text-2xl font-light mb-4">Powered by the world’s best checkout</h3>
+                        <p class="text-sm md:text-base font-light text-gray-400">
+                            Shopify Checkout is fast, fully customizable, and optimized to close more sales.
+                            <span class="font-semibold">multichannel integration.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="flex items-center mt-16 md:mt-32 ml-0">
+                <p class="text-sky-400 text-base md:text-lg">
+                    Direct and wholesale
+                </p>
+            </div>
+
+
+
+            <div class="flex flex-col space-y-6 md:flex-row md:space-y-0 md:space-x-8 mt-8">
+                <!-- Text Section -->
+                <div class="flex-1">
+                    <h2 class="text-3xl md:text-5xl font-light mb-4">
+                        Find your forever customers
+                    </h2>
+                </div>
+            </div>
+
+            <!--left and right flex boxes-->
+            <div class="flex flex-col space-y-6 md:flex-row md:space-y-0 md:space-x-4 mt-8">
+                <!-- First item -->
+                <div class="flex-1 p-4 h-[400px] md:h-[650px] rounded-lg bg-[#042f2e] relative">
+                    <video autoplay muted loop class="w-full h-full rounded-lg -mt-10 md:-mt-24">
+                        <source src="../images/left.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    <!-- Text content positioned below video on mobile -->
+
+                    <h3 class="text-xl md:text-2xl font-light text-white mb-2">Reach the right customers for less</h3>
+                    <p class="text-sm md:text-base font-light text-gray-400">
+                        Cut acquisition costs as much as 50% with Shopify Audiences and keep them coming back with
+                        integrated
+                        marketing tools and
+                        <a href="#" class="underline hover:no-underline text-white">insightful analytics.</a>
+                    </p>
+
+                </div>
+
                 <!-- Second item -->
-                <div class="flex-1 p-4 h-[650px] rounded-lg bg-[#042f2e]">
-                    <video autoplay muted loop class="w-full h-full rounded-lg -mt-24">
+                <div class="flex-1 p-4 h-[400px] md:h-[650px] rounded-lg bg-[#042f2e] relative">
+                    <video autoplay muted loop class="w-full h-full rounded-lg -mt-12 md:-mt-24">
                         <source src="../images/right.webm" type="video/webm">
                         Your browser does not support the video tag.
                     </video>
-                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-[#042f2e] bg-opacity-75 rounded-b-lg"></div>
-                    <h3 class="text-2xl font-light text-white mb-2">Unlock new growth with B2B</h3>
-                    <p class="text-base font-light text-gray-400">
+                    <!-- Text content positioned below video on mobile -->
+
+                    <h3 class="text-xl md:text-2xl font-light text-white mb-2">Unlock new growth with B2B</h3>
+                    <p class="text-sm md:text-base font-light text-gray-400">
                         Create custom experiences for wholesale buyers with flexible pricing, discounts, and payment
                         terms.
                     </p>
+
                 </div>
             </div>
 
-            <div class="flex items-center mt-32 ml-0">
-                <p class="text-sky-400/100 text-lg ">Local and global</p>
+
+            <!-- First section: Local and global -->
+            <div class="flex items-center mt-8 md:mt-32 ml-0">
+                <p class="text-sky-400/100 text-base md:text-lg">Local and global</p>
             </div>
 
-
-            <div class="flex flex-col md:flex-row mt-8 space-y-6 md:space-y-0 md:space-x-8">
-
-                <div class="flex-[1.5] ">
-                    <h2 class="text-5xl font-light mb-4 d ">Grow around the world</h2>
+            <!-- Second section: Grow around the world -->
+            <div class="flex flex-col md:flex-row mt-6 space-y-4 md:space-y-0 md:space-x-8">
+                <!-- Text section on mobile -->
+                <div class="flex-[1.5]">
+                    <h2 class="text-3xl md:text-5xl font-light mb-4">Grow around the world</h2>
                 </div>
-
-
-
-
             </div>
 
 
 
-            <section class="inner-section p-6 mt-8 rounded-lg shadow-lg h-[80vh] bg-[#022924]" >
+
+            <section class="inner-section p-6 mt-8 rounded-lg shadow-lg h-[80vh] bg-[#022924]">
 
 
                 <video autoplay muted loop class="w-full  rounded-lg shadow-md h-full">
@@ -375,67 +424,59 @@
 
             </section>
 
-            <div class="flex items-center mt-32 ml-0">
-                <p class="text-sky-400/100 text-lg ">Desktop and mobile</p>
+            <!-- First section: Desktop and mobile -->
+            <div class="flex items-center mt-8 md:mt-32 ml-0">
+                <p class="text-sky-400/100 text-base md:text-lg">Desktop and mobile</p>
             </div>
 
-
-            <div class="flex flex-col md:flex-row mt-8 space-y-6 md:space-y-0 md:space-x-8">
-
-                <div class="flex-[1.5] ">
-                    <h2 class="text-5xl font-light mb-4 d ">Take care of business</h2>
+            <!-- Second section: Take care of business -->
+            <div class="flex flex-col md:flex-row mt-6 space-y-4 md:space-y-0 md:space-x-8">
+                <!-- Text section on mobile -->
+                <div class="flex-[1.5]">
+                    <h2 class="text-3xl md:text-5xl font-light mb-4">Take care of business</h2>
                 </div>
             </div>
+
             <!--left and right flex boxes-->
-            <div class="flex space-x-4">
+            <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-4">
                 <!-- First item -->
-                <div class="flex-1 p-4 h-[650px] rounded-lg bg-[#042f2e] relative">
+                <div class="flex-1 p-4 h-auto md:h-[650px] rounded-lg bg-[#042f2e] relative">
                     <img src="../images/2left.png" alt="Description of the image"
-                        class="w-full h-full object-left rounded-lg -mt-16 mr-0">
+                        class="w-full h-[300px] md:w-[550px] md:h-[550px] object-cover rounded-lg mb-4 md:-mt-16">
 
-                    <!-- Text content with absolute positioning -->
-                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-[#042f2e] bg-opacity-75 rounded-b-lg">
-                        <h3 class="text-2xl font-light text-white mb-2">Reach the right customers for less</h3>
-                        <p class="text-base font-light text-gray-400">
-                            Cut acquisition costs as much as 50% with Shopify Audiences and keep them coming back with
-                            integrated marketing tools and
-                            <a href="#" class="underline hover:no-underline text-white">insightful analytics.</a>
-                        </p>
-
-                    </div>
+                    <!-- Text content -->
+                    <h3 class="text-xl md:text-2xl font-light text-white mb-2">Manage everything in one place</h3>
+                    <p class="text-sm md:text-base font-light text-gray-400">
+                        From back office to front of store, you’re always in control with the fully centralized
+                        <a href="#" class="underline hover:no-underline text-white"> Shopify Admin.</a>
+                    </p>
                 </div>
-
-
 
                 <!-- Second item -->
-                <div class="flex-1 p-4 h-[650px] rounded-lg bg-[#042f2e] relative">
-                    <img src="../images/2right.png" alt="Image" id="moving-image"
-                        class="w-[700px] h-[500px] object-cover rounded-lg transition-transform duration-300 mx-auto">
+                <div class="flex-1 p-4 h-auto md:h-[650px] rounded-lg bg-[#042f2e] relative">
+                    <img src="../images/2right.png" alt="Image"
+                        class="w-full h-[300px]  md:h-[550px] object-cover rounded-lg mb-4 md:mx-auto -mt-14">
 
-                    <!-- Text content with absolute positioning -->
-                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-[#042f2e] bg-opacity-75 rounded-b-lg">
-                        <h3 class="text-2xl font-light text-white mb-2">Unlock new growth with B2B</h3>
-                        <p class="text-base font-light text-gray-400">
-                            Create custom experiences for wholesale buyers with flexible pricing, discounts, and payment
-                            terms.
-                        </p>
-                    </div>
+                    <!-- Text content -->
+                    <h3 class="text-xl md:text-2xl font-light text-white mb-2">Unlock new growth with B2B</h3>
+                    <p class="text-sm md:text-base font-light text-gray-400">
+                        Create custom experiences for wholesale buyers with flexible pricing, discounts, and payment
+                        terms.
+                    </p>
                 </div>
-
             </div>
 
-
-
         </div>
-
     </section>
-    <section
-        class="relative bg-slate-900 w-full h-[300vh] flex flex-col items-start justify-start overflow-hidden rounded-t-[50px] -mt-20 z-20">
 
+    <!--Apps-->
+
+    <section
+        class="relative bg-slate-900 w-full h-auto md:h-[250vh] flex flex-col items-start justify-start overflow-hidden rounded-t-[50px] z-10 -mt-12">
         <!-- Scrolling icons -->
-        <div class="flex flex-col w-1/2 ml-24 mt-16">
-            <h2 class="text-5xl text-white font-light mb-4">Apps for anything else</h2>
-            <p class="text-2xl font-light text-gray-400 mt-7">
+        <div class="flex flex-col w-full md:w-1/2 ml-4 md:ml-24 mt-16">
+            <h2 class="text-3xl md:text-5xl text-white font-light mb-4">Apps for anything else</h2>
+            <p class="text-lg md:text-2xl font-light text-gray-400 mt-7">
                 Shopify offers all the essentials out of the box, but if your business calls for something extra you
                 have
                 <a href="#" class="underline hover:no-underline text-white">the Shopify App Store</a>—with 13,000+
@@ -443,21 +484,100 @@
             </p>
         </div>
 
-        <img src="../images/icons.png" alt="Icons" class="max-w-full h-100 object-contain mt-30 animate-loop-scroll">
+        <div class="container mx-auto p-4 overflow-hidden">
+            <div
+                class="grid grid-cols-2 sm:grid-cols-subgrid md:grid-cols-5 lg:grid-cols-10 gap-4 animate-slide-reverse hover:animate-slide-stop">
+                <!-- Unique Images in grid -->
+                <img src="../images/icons/1.png" alt="Icon 1" class="w-8 h-8 object-cover">
+                <img src="../images/icons/2.png" alt="Icon 2" class="w-8 h-8 object-cover">
+                <img src="../images/icons/3.png" alt="Icon 3" class="w-8 h-8 object-cover">
+                <img src="../images/icons/4.png" alt="Icon 4" class="w-8 h-8 object-cover">
+                <img src="../images/icons/5.png" alt="Icon 5" class="w-8 h-8 object-cover">
+                <img src="../images/icons/6.png" alt="Icon 6" class="w-8 h-8 object-cover">
+                <img src="../images/icons/7.png" alt="Icon 7" class="w-8 h-8 object-cover">
+                <img src="../images/icons/8.png" alt="Icon 8" class="w-8 h-8 object-cover">
+                <img src="../images/icons/9.png" alt="Icon 9" class="w-8 h-8 object-cover">
+                <img src="../images/icons/10.png" alt="Icon 10" class="w-8 h-8 object-cover">
+                <img src="../images/icons/11.png" alt="Icon 11" class="w-8 h-8 object-cover">
+                <img src="../images/icons/12.png" alt="Icon 12" class="w-8 h-8 object-cover">
+                <img src="../images/icons/13.png" alt="Icon 13" class="w-8 h-8 object-cover">
+                <img src="../images/icons/14.png" alt="Icon 14" class="w-8 h-8 object-cover">
+                <img src="../images/icons/15.png" alt="Icon 15" class="w-8 h-8 object-cover">
+                <img src="../images/icons/16.png" alt="Icon 16" class="w-8 h-8 object-cover">
+                <img src="../images/icons/17.png" alt="Icon 17" class="w-8 h-8 object-cover">
+                <img src="../images/icons/18.png" alt="Icon 18" class="w-8 h-8 object-cover">
+                <img src="../images/icons/19.png" alt="Icon 19" class="w-8 h-8 object-cover">
+                <img src="../images/icons/21.png" alt="Icon 20" class="w-8 h-8 object-cover">
+                <img src="../images/icons/22.png" alt="Icon 21" class="w-8 h-8 object-cover">
+                <img src="../images/icons/20.png" alt="Icon 22" class="w-8 h-8 object-cover">
+                <img src="../images/icons/23.png" alt="Icon 20" class="w-8 h-8 object-cover">
+                <img src="../images/icons/20.png" alt="Icon 24" class="w-8 h-8 object-cover">
+                <img src="../images/icons/20.png" alt="Icon 27" class="w-8 h-8 object-cover">
+                <img src="../images/icons/21.png" alt="Icon 28" class="w-8 h-8 object-cover">
+                <img src="../images/icons/22.png" alt="Icon 29" class="w-8 h-8 object-cover">
+                <img src="../images/icons/23.png" alt="Icon 30" class="w-8 h-8 object-cover">
+                <img src="../images/icons/24.png" alt="Icon 31" class="w-8 h-8 object-cover">
+                <img src="../images/icons/31.png" alt="Icon 32" class="w-8 h-8 object-cover">
+                <img src="../images/icons/26.png" alt="Icon 33" class="w-8 h-8 object-cover">
+                <img src="../images/icons/27.png" alt="Icon 34" class="w-8 h-8 object-cover">
+                <img src="../images/icons/28.png" alt="Icon 35" class="w-8 h-8 object-cover">
+                <img src="../images/icons/29.png" alt="Icon 36" class="w-8 h-8 object-cover">
+                <img src="../images/icons/30.png" alt="Icon 37" class="w-8 h-8 object-cover">
+                <img src="../images/icons/31.png" alt="Icon 38" class="w-8 h-8 object-cover">
+                <img src="../images/icons/32.png" alt="Icon 39" class="w-8 h-8 object-cover">
+                <img src="../images/icons/33.png" alt="Icon 40" class="w-8 h-8 object-cover">
+                <img src="../images/icons/34.png" alt="Icon 41" class="w-8 h-8 object-cover">
+                <img src="../images/icons/35.png" alt="Icon 42" class="w-8 h-8 object-cover">
+                <img src="../images/icons/36.png" alt="Icon 43" class="w-8 h-8 object-cover">
+                <img src="../images/icons/37.png" alt="Icon 44" class="w-8 h-8 object-cover">
+                <img src="../images/icons/38.png" alt="Icon 45" class="w-8 h-8 object-cover">
+                <img src="../images/icons/39.png" alt="Icon 46" class="w-8 h-8 object-cover">
+                <img src="../images/icons/40.png" alt="Icon 47" class="w-8 h-8 object-cover">
+                <img src="../images/icons/32.png" alt="Icon 39" class="w-8 h-8 object-cover">
+                <img src="../images/icons/33.png" alt="Icon 40" class="w-8 h-8 object-cover">
+                <img src="../images/icons/34.png" alt="Icon 41" class="w-8 h-8 object-cover">
+                <img src="../images/icons/8.png" alt="Icon 8" class="w-8 h-8 object-cover">
+                <img src="../images/icons/9.png" alt="Icon 9" class="w-8 h-8 object-cover">
+                <img src="../images/icons/10.png" alt="Icon 10" class="w-8 h-8 object-cover">
+                <img src="../images/icons/11.png" alt="Icon 11" class="w-8 h-8 object-cover">
+                <img src="../images/icons/12.png" alt="Icon 12" class="w-8 h-8 object-cover">
 
-        <!-- New content directly below the image -->
-        <div class="flex flex-col w-1/2 ml-24 mt-8">
-            <h2 class="text-5xl text-white font-light mb-4">By developers, for developers</h2>
-            <p class="text-2xl font-light text-gray-400 mt-7">
-
-                <a href="#" class="underline hover:no-underline text-white"> APIs, primitives, and tools </a>empower
-                devs and <a href="#" class="underline hover:no-underline text-white"> partners </a> to build the apps,
-                themes, and custom storefronts businesses are looking for.
-            </p>
+            </div>
         </div>
 
 
+        <!-- Tailwind Custom CSS -->
+        <style>
+            @keyframes slide-reverse {
+                0% {
+                    transform: translateX(-100%);
+                }
 
+                100% {
+                    transform: translateX(100%);
+                }
+            }
+
+            .animate-slide-reverse {
+                animation: slide-reverse 90s linear infinite;
+            }
+
+            /* Pause the animation on hover */
+            .hover\:animate-slide-stop:hover {
+                animation-play-state: paused;
+                /* Pause the animation */
+            }
+        </style>
+        <!-- New content directly below the image -->
+        <div class="flex flex-col w-full md:w-1/2 ml-4 md:ml-24 mt-8">
+            <h2 class="text-3xl md:text-5xl text-white font-light mb-4">By developers, for developers</h2>
+            <p class="text-lg md:text-2xl font-light text-gray-400 mt-7">
+                <a href="#" class="underline hover:no-underline text-white"> APIs, primitives, and tools </a> empower
+                devs and
+                <a href="#" class="underline hover:no-underline text-white"> partners </a> to build the apps, themes,
+                and custom storefronts businesses are looking for.
+            </p>
+        </div>
 
         <section
             class="relative w-[90%] h-[80vh] flex items-center justify-center overflow-hidden rounded-[50px] mt-12 z-20 mx-auto"
@@ -514,32 +634,35 @@
             </div>
         </section>
 
+
     </section>
 
-
-    <section class="p-4 w-full h-[330vh] rounded-t-[50px] -mt-20 z-20 relative bg-[#022924] ">
-        <div class="container mx-auto p-4">
+    <!--there is no-->
+    <section class="p-4 w-full rounded-t-[50px] -mt-20 z-20 relative bg-[#022924]">
+        <div class="w-full p-4">
             <!-- First container with one item -->
-            <div class="p-4 mb-4 flex justify-center items-center h-[200px] -mt-10">
-                <p class="text-white text-7xl mb-6 mt-24 font-light text-center" style="word-spacing: -0.09em;">
+            <div class="p-4 mb-4 flex justify-center items-center h-auto">
+                <p class="text-white text-4xl sm:text-5xl md:text-7xl mb-6 mt-12 sm:mt-16 md:mt-24 font-light text-center leading-tight sm:leading-snug md:leading-normal"
+                    style="word-spacing: -0.09em;">
                     There’s no better place <br> for you to build
                 </p>
             </div>
 
-
-
             <!-- Second container with two items of equal size -->
-            <div class="flex justify-between p-4 space-x-4 mx-8">
+            <div class="flex flex-col md:flex-row justify-between p-0 space-y-4 md:space-y-0 md:space-x-4 w-full">
                 <!-- Item 2 with an image -->
-                <div class="text-white p-4 flex-1 flex justify-center items-center ">
-                    <div class="bg-[#022924] text-white py-12 px-8">
+                <div class="text-white p-4 flex-1 flex justify-center items-center">
+                    <div class="bg-[#022924] text-white py-6 px-4 sm:py-12 sm:px-8">
                         <!-- Main Title -->
-                        <div class="text-left mb-8">
-                            <h1 class="text-[48px] font-light leading-tight">The world's best-converting checkout</h1>
+                        <div class="text-left mb-6 sm:mb-8">
+                            <h1
+                                class="text-[24px] sm:text-[36px] md:text-[48px] font-light leading-snug sm:leading-normal md:leading-tight">
+                                The world's best-converting checkout
+                            </h1>
                         </div>
 
                         <!-- Statistics Section -->
-                        <div class="grid grid-cols-2 gap-8">
+                        <div class="grid grid-cols-2 gap-4 sm:gap-8">
                             <!-- Left Stat Section -->
                             <div class="flex flex-col items-center">
                                 <div class="flex items-center space-x-2 border-t border-green-300 pt-2">
@@ -549,8 +672,7 @@
                                     </svg>
                                     <div class="text-sm text-green-300 font-medium">HIGHER CONVERSIONS</div>
                                 </div>
-
-                                <div class="text-[72px] font-light mt-4">15%</div>
+                                <div class="text-[48px] sm:text-[72px] font-light mt-4">15%</div>
                             </div>
 
                             <!-- Right Stat Section -->
@@ -563,408 +685,244 @@
                                     </svg>
                                     <div class="text-sm text-green-300 font-medium">HIGH-INTENT SHOPPERS</div>
                                 </div>
-                                <div class="text-[72px] font-light mt-4">150M+</div>
+                                <div class="text-[48px] sm:text-[72px] font-light mt-4">150M+</div>
                             </div>
                         </div>
 
                         <!-- Description Section -->
-                        <div class="mt-8 text-left text-lg border-l-4 border-green-400 pl-4">
+                        <div class="mt-8 text-left text-base sm:text-lg border-l-4 border-green-400 pl-4">
                             <p>
                                 <span class="text-green-400 font-semibold">Shopify Checkout</span>
                                 converts 15% higher on average than other commerce platforms and exposes your brand to
                                 150 million buy-ready shoppers.
                             </p>
-
                         </div>
-                        <p class="mt-4 text-sm text-gray-400">
+                        <p class="mt-4 text-xs sm:text-sm text-gray-400">
                             Based on external study with a Big Three global consulting firm in April, 2023.
                         </p>
                     </div>
-
                 </div>
 
                 <!-- Item 3 with an image -->
-                <div class="text-white p-4 flex-1 flex justify-center items-center   h-[600px]">
-                    <!-- <img src="../images/pps.png" alt="Item 3 Image" class="w-fit max-h-20vh object-contain" /> -->
-
-                    <div
-                        class="w-[700px] h-[550px] px-[58.62px] py-[68.75px] left-[710px] top-[220px] absolute flex-col justify-center items-center inline-flex">
-                        <img src="../images/pps.png" alt="Item 3 Image" class="w-fit max-h-20vh object-contain" />
-                    </div>
-                    <div
-                        class="w-[600px] h-[350px] px-[27.62px] py-[40.62px] left-[860px] top-[400px] absolute flex-col justify-center items-center inline-flex">
-                        <img src="../images/ppsf.png" alt="Item 3 Image" class="w-fit max-h-20vh object-contain" />
+                <div class="text-white p-4 flex-1 flex justify-center items-center h-auto relative">
+                    <!-- First Image (Background) -->
+                    <div class="w-full h-full relative flex justify-center items-center">
+                        <img src="../images/pps.png" alt="Item 1 Image" class="w-full h-auto object-contain" />
                     </div>
 
+                    <!-- Second Image (Overlay) -->
+                    <div class="absolute top-[40%] left-1/2 transform -translate-x-1/2">
+                        <img src="../images/ppsf.png" alt="Item 2 Image"
+                            class="w-[90vw] sm:w-[600px] h-auto object-contain" />
+                    </div>
                 </div>
             </div>
-
-
         </div>
-
-        <!--under the globe-->
-        <section>
-            <div class="flex flex-col w-30 ml-24 mt-8">
-                <h2 class="text-5xl text-white font-light mb-4">Shopify keeps you at the cutting edge</h2>
-                <p class="text-2xl font-light text-gray-400 mt-7">
-                    Our fleet of 4000+ world-class developers never stops leveraging the latest <br>tech to make your
-                    business stronger, faster, and more successful.
-                </p>
-            </div>
-
-            <!-- Flexbox Container -->
-            <div class="flex mt-8 mx-16 space-x-4 h-[70vh] ">
-
-
-
-                <div class="w-2/3 rounded-lg bg-black p-4 overflow-hidden">
-                    <div class="w-2/3 rounded-lg bg-black p-4 overflow-hidden">
-                        <div class="relative w-full">
-                            <!-- Slider Container -->
-                            <div class="flex transition-transform duration-700 ease-in-out" id="slider">
-                                <!-- Image 1 -->
-                                <video autoplay muted loop class="w-full  rounded-lg shadow-md h-full">
-                                    <source src="../images/01.webm" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <!-- Image 2 -->
-                                <video autoplay muted loop class="w-full  rounded-lg shadow-md h-full">
-                                    <source src="../images/01.webm" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <!-- Image 3 -->
-                                <video autoplay muted loop class="w-full  rounded-lg shadow-md h-full">
-                                    <source src="../images/01.webm" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-
-                            <!-- Left Arrow -->
-                            <button id="prev"
-                                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-600">
-                                &#10094;
-                            </button>
-                            <!-- Right Arrow -->
-                            <button id="next"
-                                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-600">
-                                &#10095;
-                            </button>
-                        </div>
-                    </div>
-                    <section class="bg-black text-white p-6 rounded-lg">
-                        <h2 class="text-3xl font-light mb-2 flex items-center">
-                            AI designed for commerce
-                            <span class="ml-2 text-purple-500">&#10024;</span> <!-- Symbol icon -->
-                        </h2>
-                        <p class="text-lg text-gray-400">
-                            <a href="#" class="text-white underline">Shopify Magic</a> taps the power of AI to save you
-                            time, whether it’s generating product content or suggesting ways to get the most out of
-                            Shopify.
-                        </p>
-                    </section>
-
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-                <div class="w-1/3 rounded-lg  bg-gray-500 p-4 mr-2">Left Item</div>
-            </div>
-
-
-
-            <div class="flex space-x-4 mt-16 mx-16">
-                <!-- First item -->
-                <div class="flex-1 p-4 h-[70vh] rounded-lg bg-[#042f2e] relative">
-
-                </div>
-
-                <!-- Second item -->
-                <div class="flex-1 p-4 h-[70vh] rounded-lg bg-[#042f2e] relative">
-
-                </div>
-
-            </div>
-
-
-            <!-- black bg last one -->
-
-
-
-
-
-
-        </section>
-
-
-
     </section>
 
-    <section class="p-4 w-full h-[130vh] rounded-t-[50px] -mt-20 z-20 relative bg-[#000000] ">
 
+
+
+
+
+
+
+
+    <section class="p-4 w-full h-auto rounded-t-[50px] -mt-20 z-20 relative bg-[#000000]">
         <div class="container mx-auto p-4">
             <!-- First container with one item -->
-            <div class="p-4 mb-4 flex justify-center items-center h-[200px] -mt-10">
-                <p class="text-white text-7xl mb-6 mt-24 font-light text-center" style="word-spacing: -0.09em;">
+            <div class="p-4 mb-4 flex justify-center items-center h-auto -mt-10">
+                <p class="text-white text-3xl sm:text-4xl md:text-6xl mb-6 mt-16 md:mt-24 font-light text-center"
+                    style="word-spacing: -0.09em;">
                     Start selling in no time
                 </p>
             </div>
 
-
-
             <!-- Second container with two items of equal size -->
-            <div class="flex justify-between p-4 space-x-4 mx-8 bg-black h-[80vh]">
+            <div class="flex flex-col md:flex-row justify-between p-4 space-y-4 md:space-x-4 w-full h-auto">
 
-                <div class="text-white p-4 flex-1 flex justify-center items-center bg-black rounded-lg ">
-
-                    <div
-                        class="w-[350px] h-[460px] px-[26.25px] py-[37.50px] left-[390px] top-[320px] absolute flex-col justify-center items-center inline-flex ">
-                        <img src="../images/laptop.webp" alt="Item 3 Image"
-                            class="w-fit max-h-20vh object-contain rounded-lg" />
-                    </div>
-                    <div
-                        class="w-[350px] h-[460px] px-[26.38px] py-[37.88px] left-[80px] top-[200px] absolute flex-col justify-center items-center inline-flex ">
-                        <img src="../images/bluejeans.webp" alt="Item 3 Image"
-                            class="w-fit max-h-20vh object-contain rounded-lg" />
-                    </div>
-
-
+                <!-- Left Section with Images (side by side even on mobile) -->
+                <div
+                    class="text-white flex justify-center items-center md:flex-1 bg-black p-4 rounded-lg relative space-x-4">
+                    <img src="../images/laptop.webp" alt="Laptop Image"
+                        class="w-[45%] max-w-xs h-auto object-cover flex-shrink-0">
+                    <img src="../images/bluejeans.webp" alt="Blue Jeans Image"
+                        class="w-[45%] max-w-xs h-auto object-cover flex-shrink-0 relative top-4">
                 </div>
 
-
-                <div class="text-white p-4 flex-1 flex justify-left items-center bg-black">
+                <!-- Right Section with Steps -->
+                <div class="text-white flex flex-col justify-center items-center md:items-start md:flex-1 p-4 bg-black">
                     <!-- Steps Container -->
-                    <div class="space-y-8 text-left">
+                    <div class="space-y-8 text-center md:text-left">
                         <!-- Step 1 -->
-                        <div class="flex items-left space-x-4">
+                        <div
+                            class="flex flex-col items-center md:items-start space-y-2 md:space-y-0 md:space-x-4 md:flex-row">
                             <span class="text-green-400 text-2xl font-bold">01</span>
                             <div class="flex flex-col border-b border-gray-400 pb-2">
-                                <span class="text-5xl font-light">Add your first product</span>
+                                <span class="text-3xl md:text-5xl font-light">Add your first product</span>
                             </div>
                         </div>
                         <!-- Step 2 -->
-                        <div class="flex items-left space-x-4">
+                        <div
+                            class="flex flex-col items-center md:items-start space-y-2 md:space-y-0 md:space-x-4 md:flex-row">
                             <span class="text-green-400 text-2xl font-bold">02</span>
                             <div class="flex flex-col border-b border-gray-400 pb-2">
-                                <span class="text-5xl font-light">Customize your store</span>
+                                <span class="text-3xl md:text-5xl font-light">Customize your store</span>
                             </div>
                         </div>
                         <!-- Step 3 -->
-                        <div class="flex items-left space-x-4">
+                        <div
+                            class="flex flex-col items-center md:items-start space-y-2 md:space-y-0 md:space-x-4 md:flex-row">
                             <span class="text-green-400 text-2xl font-bold">03</span>
                             <div class="flex flex-col">
-                                <span class="text-5xl font-light">Set up payments</span>
+                                <span class="text-3xl md:text-5xl font-light">Set up payments</span>
                             </div>
                         </div>
 
-
                         <!-- Button -->
                         <button
-                            class="mt-24 bg-white text-black px-6 py-2 rounded-full text-lg font-semibold shadow-lg">
+                            class="mt-12 md:mt-24 bg-white text-black px-6 py-2 rounded-full text-lg font-semibold shadow-lg">
                             Take your shot
                         </button>
                     </div>
                 </div>
-
             </div>
-
-
         </div>
-
-
     </section>
-    <!--   footer section-->
 
 
 
-<section class="bg-black">
- 
+    <footer>
+        <section class="bg-black">
 
-    <section class="flex items-center justify-center bg-black -mx-24 h-[120vh] rounded-t-[50px] -mt-4 z-20">
-        <div class="flex w-4/5 bg-white shadow-lg rounded-lg h-[120vh]">
-            <!-- Left Side (Smaller) -->
-            <div class="w-1/5 bg-black p-6 text-white flex items-baseline justify-start">
-                <!-- Shopify Icon -->
-                <img src="../images/bshopify.jpg" alt="Shopify Icon" class="w-16 h-16">
-            </div>
-            <!-- Right Side (Larger) -->
-            <div class="w-4/5 bg-black p-6">
-                <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-28 px-24">
-                    <div>
-                        <h3 class="text-white font-bold mb-4 leading-9">Shopify</h3>
-                        <ul>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-9">About</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-9">Careers</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-9">Investors</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-9">Press and Media</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-9">Partners</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-9">Affiliates</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-9">Legal</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-9">Service Status</a></li>
-                        </ul>
+            <section class="flex flex-col md:flex-row justify-center bg-black h-auto rounded-t-[50px] -mt-4 z-20">
+                <div class="w-full md:w-4/5 bg-white shadow-lg rounded-lg h-auto flex flex-col md:flex-row">
+
+                    <!-- Left Side (Smaller) -->
+                    <div class="w-full md:w-1/5 bg-black p-6 text-white flex justify-center md:justify-start">
+                        <!-- Shopify Icon -->
+                        <img src="../images/bshopify.jpg" alt="Shopify Icon" class="w-16 h-16">
                     </div>
-    
-                    <div>
-                        <h3 class="text-white font-bold mb-4 leading-9">Support</h3>
-                        <ul>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Merchant Support</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Help Center</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Hire a Partner</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Shopify Academy</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Shopify Community</a></li>
-                        </ul>
-                    </div>
-    
-                    <div>
-                        <h3 class="text-white font-bold mb-4 leading-9">Developers</h3>
-                        <ul>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Shopify.dev</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">API Documentation</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Dev Degree</a></li>
-                        </ul>
-                    </div>
-    
-                    <div>
-                        <h3 class="text-white font-bold mb-4 leading-9">Products</h3>
-                        <ul>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Shop</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Shop Pay</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Shopify Plus</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Shopify Fulfillment Network</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Linkpop</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Shopify for Enterprise</a></li>
-                        </ul>
-                    </div>
-    
-                    <div>
-                        <h3 class="text-white font-bold mb-4 leading-9">Global Impact</h3>
-                        <ul>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Sustainability</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Social Impact</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Build Black</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Build Native</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Research</a></li>
-                        </ul>
-                    </div>
-    
-                    <div>
-                        <h3 class="text-white font-bold mb-4 leading-9">Solutions</h3>
-                        <ul>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Online Store Builder</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Shopify Plus</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Website Builder</a></li>
-                            <li><a href="#" class="text-white hover:text-white hover:underline leading-8">Ecommerce Website</a></li>
-                        </ul>
+
+                    <!-- Right Side (Larger) -->
+                    <div class="w-full md:w-4/5 bg-black p-6">
+                        <div
+                            class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 md:px-8">
+                            <!-- Shopify Section -->
+                            <div>
+                                <h3 class="text-white font-bold mb-4">Shopify</h3>
+                                <ul>
+                                    <li><a href="#" class="text-white hover:underline leading-8">About</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Careers</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Investors</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Press and Media</a>
+                                    </li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Partners</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Affiliates</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Legal</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Service Status</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Support Section -->
+                            <div>
+                                <h3 class="text-white font-bold mb-4">Support</h3>
+                                <ul>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Merchant Support</a>
+                                    </li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Help Center</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Hire a Partner</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Shopify Academy</a>
+                                    </li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Shopify Community</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Developers Section -->
+                            <div>
+                                <h3 class="text-white font-bold mb-4">Developers</h3>
+                                <ul>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Shopify.dev</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">API Documentation</a>
+                                    </li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Dev Degree</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Products Section -->
+                            <div>
+                                <h3 class="text-white font-bold mb-4">Products</h3>
+                                <ul>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Shop</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Shop Pay</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Shopify Plus</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Shopify Fulfillment
+                                            Network</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Linkpop</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Shopify for
+                                            Enterprise</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Global Impact Section -->
+                            <div>
+                                <h3 class="text-white font-bold mb-4">Global Impact</h3>
+                                <ul>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Sustainability</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Social Impact</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Build Black</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Build Native</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Research</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Solutions Section -->
+                            <div>
+                                <h3 class="text-white font-bold mb-4">Solutions</h3>
+                                <ul>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Online Store
+                                            Builder</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Shopify Plus</a></li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Website Builder</a>
+                                    </li>
+                                    <li><a href="#" class="text-white hover:underline leading-8">Ecommerce Website</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
+
+            <!-- Bottom Section -->
+            <div class="bg-black p-8 flex flex-col md:flex-row justify-between items-center border-t border-gray-400">
+                <!-- Left Item -->
+                <div class="mb-4 md:mb-0">
+                    <ul class="flex flex-wrap justify-center md:justify-start space-x-4">
+                        <li><a href="#" class="text-white hover:underline">USA</a></li>
+                        <li><a href="#" class="text-white hover:underline">Terms of Service</a></li>
+                        <li><a href="#" class="text-white hover:underline">Privacy Policy</a></li>
+                        <li><a href="#" class="text-white hover:underline">Sitemap</a></li>
+                        <li><a href="#" class="text-white hover:underline">Privacy Choices</a></li>
+                    </ul>
+                </div>
+
+                <!-- Right Item (Social Links) -->
+                <div>
+                    <ul class="flex justify-center space-x-4">
+                        <li><a href="#"><img src="../images/facebook.webp" alt="Facebook" class="w-6 h-6"></a></li>
+                        <li><a href="#"><img src="../images/TwitterX.png" alt="Twitter" class="w-6 h-6"></a></li>
+                        <li><a href="#"><img src="../images/YouTube.png" alt="YouTube" class="w-6 h-6"></a></li>
+                        <li><a href="#"><img src="../images/Instagram.png" alt="Instagram" class="w-6 h-6"></a></li>
+                        <li><a href="#"><img src="../images/TikTok.png" alt="TikTok" class="w-6 h-6"></a></li>
+                        <li><a href="#"><img src="../images/LinkedIn.png" alt="LinkedIn" class="w-6 h-6"></a></li>
+                        <li><a href="#"><img src="../images/Pinterest.png" alt="Pinterest" class="w-6 h-6"></a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </section>
-    
-   
-   <!-- New Container with Two Items -->
-<!-- New Container with Two Items -->
-<div class="bg-black p-8 mx-8 flex border-t border-gray-400">
-    <!-- Left Item (Larger) -->
-    <div class="md:w-2/3 w-full p-4">
-        <ul class="flex space-x-6 mt-4">
-            <li><a href="#" class="text-white hover:underline">USA</a></li>
-            <li><a href="#" class="text-white hover:underline">Terms of Service</a></li>
-            <li><a href="#" class="text-white hover:underline">Privacy Policy</a></li>
-            <li><a href="#" class="text-white hover:underline">Sitemap</a></li>
-            <li><a href="#" class="text-white hover:underline">Privacy Choices</a></li>
-        </ul>
-    </div>
-    
-    <!-- Right Item (Smaller) -->
-    <div class="md:w-1/3 w-full p-4 bg-black rounded-lg">
-        <!-- <div class="flex space-x-4 p-4"> -->
-            <ul class="flex space-x-6 mt-4">
-                <li>
-                    <a href="#">
-                        <img src="../images/facebook.webp" alt="Icon 1" class="w-6 h-6">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../images/TwitterX.png" alt="Icon 2" class="w-6 h-6">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../images/YouTube.png" alt="Icon 3" class="w-6 h-6">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../images/Instagram.png" alt="Icon 4" class="w-6 h-6">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../images/TikTok.png" alt="Icon 5" class="w-6 h-6">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../images/LinkedIn.png" alt="Icon 6" class="w-6 h-6">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../images/Pinterest.png" alt="Icon 7" class="w-6 h-6">
-                    </a>
-                </li>
-            </ul>
-            
-        <!-- </div> -->
-        </ul>
-    </div>
-</div>
-
-
-
-</section>  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </section>
+    </footer>
 
 </body>
 
@@ -974,165 +932,159 @@
 
 
 
+<script>
+    const slider = document.getElementById('slider');
+    let currentIndex = 0;
 
+    const images = document.querySelectorAll('#slider img');
+    const totalImages = images.length;
+    const imageWidth = images[0].clientWidth;  // Get the width of one image
 
-    <script>
-        const slider = document.getElementById('slider');
-        let currentIndex = 0;
+    // Set the slider container width to be the total width of all images
+    slider.style.width = `${totalImages * 100}%`;
 
-        const images = document.querySelectorAll('#slider img');
-        const totalImages = images.length;
-        const imageWidth = images[0].clientWidth;  // Get the width of one image
+    // Next button
+    document.getElementById('next').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalImages;
+        slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+    });
 
-        // Set the slider container width to be the total width of all images
-        slider.style.width = `${totalImages * 100}%`;
+    // Previous button
+    document.getElementById('prev').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+    });
 
-        // Next button
-        document.getElementById('next').addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalImages;
-            slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
-        });
-
-        // Previous button
-        document.getElementById('prev').addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-            slider.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
-        });
-
-        // Listen for window resize to recalculate the image width
-        window.addEventListener('resize', () => {
-            imageWidth = images[0].clientWidth;  // Recalculate image width on resize
-        });
-    </script>
-
-
-
-    <script>
-        const slider = document.getElementById('slider');
-        let currentIndex = 0;
-
-        const images = document.querySelectorAll('#slider img');
-        const totalImages = images.length;
-
-        // Next button
-        document.getElementById('next').addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalImages;
-            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        });
-
-        // Previous button
-        document.getElementById('prev').addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        });
-    </script>
+    // Listen for window resize to recalculate the image width
+    window.addEventListener('resize', () => {
+        imageWidth = images[0].clientWidth;  // Recalculate image width on resize
+    });
+</script>
 
 
 
+<script>
+    // const slider = document.getElementById('slider');
+    // let currentIndex = 0;
+
+    // const images = document.querySelectorAll('#slider img');
+    // const totalImages = images.length;
+
+    // Next button
+    document.getElementById('next').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalImages;
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    });
+
+    // Previous button
+    document.getElementById('prev').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    });
+</script>
 
 
 
+<script>
+    const videoSlider = document.getElementById('video-slider');
+    let currentVideoIndex = 0;
 
+    const videos = document.querySelectorAll('#video-slider video');
+    const totalVideos = videos.length;
 
+    // Next button
+    document.getElementById('next-video').addEventListener('click', () => {
+        currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
+        videoSlider.style.transform = `translateX(-${currentVideoIndex * 100}%)`;
+    });
 
-    <script>
-        const videoSlider = document.getElementById('video-slider');
-        let currentVideoIndex = 0;
-
-        const videos = document.querySelectorAll('#video-slider video');
-        const totalVideos = videos.length;
-
-        // Next button
-        document.getElementById('next-video').addEventListener('click', () => {
-            currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
-            videoSlider.style.transform = `translateX(-${currentVideoIndex * 100}%)`;
-        });
-
-        // Previous button
-        document.getElementById('prev-video').addEventListener('click', () => {
-            currentVideoIndex = (currentVideoIndex - 1 + totalVideos) % totalVideos;
-            videoSlider.style.transform = `translateX(-${currentVideoIndex * 100}%)`;
-        });
-    </script>
+    // Previous button
+    document.getElementById('prev-video').addEventListener('click', () => {
+        currentVideoIndex = (currentVideoIndex - 1 + totalVideos) % totalVideos;
+        videoSlider.style.transform = `translateX(-${currentVideoIndex * 100}%)`;
+    });
+</script>
 
 
 
 
-    <!-- Tailwind CSS for the animation -->
-    <style>
-        @keyframes slideIn {
-            0% {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
+<!-- Tailwind CSS for the animation -->
+<style>
+    @keyframes slideIn {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
         }
 
-        @keyframes slideOut {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 
-            100% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
+    @keyframes slideOut {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
         }
 
-        .slide-in {
-            animation: slideIn 0.5s ease-in-out forwards;
+        100% {
+            transform: translateY(-100%);
+            opacity: 0;
         }
+    }
 
-        .slide-out {
-            animation: slideOut 0.5s ease-in-out forwards;
+    .slide-in {
+        animation: slideIn 0.5s ease-in-out forwards;
+    }
+
+    .slide-out {
+        animation: slideOut 0.5s ease-in-out forwards;
+    }
+</style>
+
+
+<!-- JavaScript for changing header background on scroll -->
+<script>
+    window.addEventListener('scroll', function () {
+        const header = document.getElementById('main-header');
+        if (window.scrollY > 50) { // When user scrolls down 50px
+            header.classList.add('bg-black', 'shadow-lg'); // Add black background and shadow
+            header.classList.remove('bg-transparent');
+        } else {
+            header.classList.remove('bg-black', 'shadow-lg');
+            header.classList.add('bg-transparent'); // Revert back to transparent
         }
-    </style>
+    });
+</script>
 
 
+<script>
+    const imageContainer = document.getElementById('image-container');
+    const movingImage = document.getElementById('moving-image');
+
+    imageContainer.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const { offsetWidth, offsetHeight } = imageContainer;
+        const x = clientX / offsetWidth;
+        const y = clientY / offsetHeight;
+
+        const moveX = (x - 0.5) * 20; // Change 20 to control the amount of movement
+        const moveY = (y - 0.5) * 20; // Change 20 to control the amount of movement
+
+        movingImage.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+
+    imageContainer.addEventListener('mouseleave', () => {
+        movingImage.style.transform = 'translate(0, 0)'; // Reset position on mouse leave
+    });
+</script>
 
 
-
-
-    <!-- JavaScript for changing header background on scroll -->
-    <script>
-        window.addEventListener('scroll', function () {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 50) { // When user scrolls down 50px
-                header.classList.add('bg-black', 'shadow-lg'); // Add black background and shadow
-                header.classList.remove('bg-transparent');
-            } else {
-                header.classList.remove('bg-black', 'shadow-lg');
-                header.classList.add('bg-transparent'); // Revert back to transparent
-            }
-        });
-    </script>
-
-
-    <script>
-        const imageContainer = document.getElementById('image-container');
-        const movingImage = document.getElementById('moving-image');
-
-        imageContainer.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const { offsetWidth, offsetHeight } = imageContainer;
-            const x = clientX / offsetWidth;
-            const y = clientY / offsetHeight;
-
-            const moveX = (x - 0.5) * 20; // Change 20 to control the amount of movement
-            const moveY = (y - 0.5) * 20; // Change 20 to control the amount of movement
-
-            movingImage.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
-
-        imageContainer.addEventListener('mouseleave', () => {
-            movingImage.style.transform = 'translate(0, 0)'; // Reset position on mouse leave
-        });
-    </script>
-
-
-
+<script>
+    document.getElementById('burger-btn').addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+<!--globe-->

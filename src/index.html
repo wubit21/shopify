@@ -13,6 +13,34 @@
             transition: background-color 0.3s ease;
         }
     </style>
+    <style>
+        @keyframes slide-in {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slide-out {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+        .slide-in {
+            animation: slide-in 1s ease-in-out forwards;
+        }
+        .slide-out {
+            animation: slide-out 1s ease-in-out forwards;
+        }
+    </style>
 </head>
 
 <body>
@@ -80,16 +108,7 @@
         </nav>
     </header>
 
-    <!-- <script>
-        document.getElementById('burger-btn').addEventListener('click', function () {
-            var mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script> -->
-
-
-
-    <section class="relative w-full h-screen overflow-hidden">
+        <section class="relative w-full h-screen overflow-hidden">
         <!-- Background Video Container -->
         <div class="absolute inset-0">
             <video autoplay muted loop class="w-full h-full object-cover">
@@ -105,11 +124,51 @@
                 <h1 class="text-5xl md:text-6xl lg:text-8xl pl-4 md:pl-16 lg:pl-32">Be the next</h1>
             </div>
 
-            <div class="flex flex-col items-start text-white z-20 mt-2 w-full">
-                <h2 id="rotatingText"
-                    class="text-5xl md:text-6xl lg:text-8xl font-light transition-transform duration-1000 ease-in-out pl-4 md:pl-16 lg:pl-32">
+            <div class="flex flex-col items-start text-white z-20 mt-2 w-full text-center lg:ml-32 ml-4">
+                <h2 id="rotatingText" class="text-4xl md:text-5xl lg:text-6xl font-light">
+                    <!-- Text will be injected here -->
                 </h2>
             </div>
+        
+            <script>
+                const phrases = [
+                    'Big thing',
+                    'One to watch',
+                    'Category creator',
+                    'Unicorn start',
+                    'Household name',
+                    'Global empire',
+                    'Solo flier',
+                    'Store the line up for'
+                ];
+        
+                let currentIndex = 0;
+        
+                function updateText() {
+                    const rotatingText = document.getElementById('rotatingText');
+                    
+                    // Remove any previous animation classes
+                    rotatingText.classList.remove('slide-in', 'slide-out');
+        
+                    // Apply the slide-out animation first
+                    rotatingText.classList.add('slide-out');
+        
+                    setTimeout(() => {
+                        // Update the text content after the slide-out animation completes
+                        rotatingText.textContent = phrases[currentIndex];
+                        currentIndex = (currentIndex + 1) % phrases.length; // Loop back to the start
+        
+                        // Add the slide-in animation to the updated text
+                        rotatingText.classList.remove('slide-out');
+                        rotatingText.classList.add('slide-in');
+                    }, 900); // Delay text change until the slide-out finishes
+                }
+        
+                // Set interval to update the text every second
+                setInterval(updateText, 2000); // Allows the animation to complete (1 second in, 1 second out)
+                updateText(); // Initial call to display the first phrase immediately
+            </script>
+            
 
             <!-- Content under "Be the next" -->
             <div class="flex flex-col items-start text-white z-20 mt-2 w-full">
